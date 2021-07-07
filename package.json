@@ -9,8 +9,8 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "npm run build-es && npm run build-commonjs",
-    "build-es": "tsc src/index.ts --outDir es --strict --noUnusedParameters --declaration --lib dom,es5,es6 --module es6 --target es6 --moduleResolution node",
-    "build-commonjs": "tsc src/index.ts --outDir commonjs --strict --noUnusedParameters --declaration --lib dom,es5,es6 --target es5",
+    "build-es": "tsc src/*.ts --outDir es --strict --noUnusedParameters --declaration --lib dom,es5,es6 --module es6 --target es6 --moduleResolution node",
+    "build-commonjs": "tsc src/*.ts --outDir commonjs --strict --noUnusedParameters --declaration --lib dom,es5,es6 --target es5",
     "test": "ts-mocha --exit --project ./tsconfig.json test/**/*.spec.ts"
   },
   "files": [
