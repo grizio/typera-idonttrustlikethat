@@ -1,6 +1,6 @@
 {
   "name": "typera-idonttrustlikethat",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": false,
   "description": "Support of idonttrustlikethat on typera",
   "main": "commonjs/index.js",
