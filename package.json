@@ -1,6 +1,6 @@
 {
   "name": "typera-idonttrustlikethat",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "sideEffects": false,
   "description": "Support of idonttrustlikethat on typera",
   "main": "commonjs/index.js",
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grizio/ts-env.git"
+    "url": "git+https://github.com/grizio/typera-idonttrustlikethat.git"
   },
   "keywords": [
     "typescript",
@@ -42,8 +42,6 @@
     "@types/node": "15.12.5",
     "@types/supertest": "2.0.11",
     "chai": "4.3.4",
-    "koa-bodyparser": "4.3.0",
-    "koa-cookie": "1.0.0",
     "mocha": "9.0.1",
     "supertest": "6.1.3",
     "ts-mocha": "8.0.0",
@@ -54,6 +52,8 @@
   },
   "optionalDependencies": {
     "cookie-parser": "1.4.5",
+    "koa-bodyparser": "4.3.0",
+    "koa-cookie": "1.0.0",
     "typera-common": "2.4.1",
     "typera-express": "2.4.1",
     "typera-koa": "2.4.1"

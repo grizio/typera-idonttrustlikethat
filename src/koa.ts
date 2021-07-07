@@ -1,9 +1,8 @@
-import * as commonParser from './common'
-import * as commonResponse from 'typera-common/response'
+import * as commonParser from "./common"
+import * as commonResponse from "typera-common/response"
 import { RequestBase } from "typera-koa"
 
-export type ErrorHandler<ErrorResponse extends commonResponse.Generic> =
-  commonParser.ErrorHandler<ErrorResponse>
+export type ErrorHandler<ErrorResponse extends commonResponse.Generic> = commonParser.ErrorHandler<ErrorResponse>
 
 function getBody(req: RequestBase): any {
   return req.ctx.request.body
@@ -19,8 +18,7 @@ export const query = commonParser.query(getQuery)
 
 function getHeaders(req: RequestBase): any {
   return new Proxy(req.ctx, {
-    get: (target, field) =>
-      typeof field === 'string' ? target.get(field) : undefined,
+    get: (target, field) => (typeof field === "string" ? target.get(field) : undefined),
   })
 }
 export const headersP = commonParser.headersP(getHeaders)
