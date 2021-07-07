@@ -1,4 +1,4 @@
-import * as commonParser from "./common"
+import * as commonParser from "../common/parsers"
 import * as commonResponse from "typera-common/response"
 import { RequestBase } from "typera-express"
 

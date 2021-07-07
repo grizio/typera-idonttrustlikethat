@@ -5,7 +5,7 @@ import koaBodyparser from "koa-bodyparser"
 import koaCookie from "koa-cookie"
 import request from "supertest"
 import type { Server } from "http"
-import * as parsers from "../src/koa"
+import { Parser } from "../src/koa"
 
 describe("Parsers for koa", () => {
   let server: Server | null = null
@@ -20,7 +20,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.query(object({ query: string, limit: numberFromString })))
+        .use(Parser.query(object({ query: string, limit: numberFromString })))
         .handler((req) => {
           const query: string = req.query.query
           const limit: number = req.query.limit
@@ -35,7 +35,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.query(object({ query: string, limit: numberFromString })))
+        .use(Parser.query(object({ query: string, limit: numberFromString })))
         .handler((req) => {
           const query: string = req.query.query
           const limit: number = req.query.limit
@@ -50,7 +50,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.queryP(object({ query: string, limit: numberFromString }), Response.imATeapot))
+        .use(Parser.queryP(object({ query: string, limit: numberFromString }), Response.imATeapot))
         .handler((req) => {
           const query: string = req.query.query
           const limit: number = req.query.limit
@@ -65,7 +65,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .post("/foo")
-        .use(parsers.body(object({ query: string, limit: number })))
+        .use(Parser.body(object({ query: string, limit: number })))
         .handler((req) => {
           const query: string = req.body.query
           const limit: number = req.body.limit
@@ -80,7 +80,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .post("/foo")
-        .use(parsers.body(object({ query: string, limit: number })))
+        .use(Parser.body(object({ query: string, limit: number })))
         .handler((req) => {
           const query: string = req.body.query
           const limit: number = req.body.limit
@@ -95,7 +95,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .post("/foo")
-        .use(parsers.bodyP(object({ query: string, limit: number }), Response.imATeapot))
+        .use(Parser.bodyP(object({ query: string, limit: number }), Response.imATeapot))
         .handler((req) => {
           const query: string = req.body.query
           const limit: number = req.body.limit
@@ -110,7 +110,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.headers(object({ "X-Token": string, "API-KEY": string })))
+        .use(Parser.headers(object({ "X-Token": string, "API-KEY": string })))
         .handler((req) => {
           const xToken: string = req.headers["X-Token"]
           const apiKey: string = req.headers["API-KEY"]
@@ -129,7 +129,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.headers(object({ "X-Token": string, "API-KEY": string })))
+        .use(Parser.headers(object({ "X-Token": string, "API-KEY": string })))
         .handler((req) => {
           const xToken: string = req.headers["X-Token"]
           const apiKey: string = req.headers["API-KEY"]
@@ -144,7 +144,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.headersP(object({ "X-Token": string, "API-KEY": string }), Response.imATeapot))
+        .use(Parser.headersP(object({ "X-Token": string, "API-KEY": string }), Response.imATeapot))
         .handler((req) => {
           const xToken: string = req.headers["X-Token"]
           const apiKey: string = req.headers["API-KEY"]
@@ -159,7 +159,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.cookies(object({ username: string, password: string })))
+        .use(Parser.cookies(object({ username: string, password: string })))
         .handler((req) => {
           const username: string = req.cookies.username
           const password: string = req.cookies.password
@@ -177,7 +177,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.cookies(object({ username: string, password: string })))
+        .use(Parser.cookies(object({ username: string, password: string })))
         .handler((req) => {
           const username: string = req.cookies.username
           const password: string = req.cookies.password
@@ -192,7 +192,7 @@ describe("Parsers for koa", () => {
     server = makeApp(
       route
         .get("/foo")
-        .use(parsers.cookiesP(object({ username: string, password: string }), Response.imATeapot))
+        .use(Parser.cookiesP(object({ username: string, password: string }), Response.imATeapot))
         .handler((req) => {
           const username: string = req.cookies.username
           const password: string = req.cookies.password

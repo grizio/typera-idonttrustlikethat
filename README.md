@@ -25,7 +25,7 @@ Below a complete example, inspired from [typera documentation](https://github.co
 import { Response, Route, URL, route } from "typera-express"
 import { object, string, number } from "idonttrustlikethat"
 // Change "typera-idonttrustlikethat/express" to "typera-idonttrustlikethat/koa" if you're using Koa
-import * as Parser from "typera-idonttrustlikethat/express"
+import { Parser } from "typera-idonttrustlikethat/express"
 
 interface User {
   id: number
@@ -69,9 +69,9 @@ The API follows the same logic than the parsers of [typera](https://github.com/a
 
 ```typescript
 import { object, string, number } from "idonttrustlikethat"
-import * as Parser from "typera-idonttrustlikethat/express"
+import { Parser } from "typera-idonttrustlikethat/express"
 // or
-import * as Parser from "typera-idonttrustlikethat/koa"
+import { Parser } from "typera-idonttrustlikethat/koa"
 ```
 
 ### `Parser.query<T>(validator: Validator<T>): Middleware<{ query: T }, Response.BadRequest<string>>`
@@ -189,7 +189,7 @@ If you want to abstract your custom error handling to reuse it in multiple route
 
 ```typescript
 import { Validator } from "idonttrustlikethat"
-import * as Parser from "typera-idonttrustlikethat/express" // or koa
+import { Parser } from "typera-idonttrustlikethat/express" // or koa
 
 function errorToString(err: t.Errors): string {
   // Turn err to string the way you like
