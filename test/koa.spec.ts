@@ -1,12 +1,21 @@
 import { number, numberFromString, object, string } from "idonttrustlikethat"
-import { Response, route, router } from "typera-express"
-import express from "express"
-import { json } from "body-parser"
+import { Response, route, router } from "typera-koa"
+import Koa from "koa"
+import koaBodyparser from "koa-bodyparser"
+import koaCookie from "koa-cookie"
 import request from "supertest"
-import cookieParser from "cookie-parser"
-import * as parsers from "../src/express"
+import type { Server } from "http"
+import * as parsers from "../src/koa"
 
-describe("Parsers for express", () => {
+describe("Parsers for koa", () => {
+  let server: Server | null = null
+  afterEach(() => {
+    if (server !== null) {
+      server.close()
+      server = null
+    }
+  })
+
   it("should correctly parse the query", async () => {
     const foo = route
       .get("/foo")
@@ -18,9 +27,10 @@ describe("Parsers for express", () => {
       })
 
     const handler = router(foo).handler()
-    const app = express().use(json()).use(handler)
+    const app = new Koa().use(handler)
+    server = app.listen(8888)
 
-    await request(app).get("/foo?query=foo&limit=10").expect(200, { query: "foo", limit: 10 })
+    await request(server).get("/foo?query=foo&limit=10").expect(200, { query: "foo", limit: 10 })
   })
 
   it("should correctly parse the body", async () => {
@@ -34,9 +44,10 @@ describe("Parsers for express", () => {
       })
 
     const handler = router(foo).handler()
-    const app = express().use(json()).use(handler)
+    const app = new Koa().use(koaBodyparser()).use(handler)
+    server = app.listen(8888)
 
-    await request(app).post("/foo").send({ query: "foo", limit: 10 }).expect(200, { query: "foo", limit: 10 })
+    await request(server).post("/foo").send({ query: "foo", limit: 10 }).expect(200, { query: "foo", limit: 10 })
   })
 
   it("should correctly parse the headers", async () => {
@@ -50,9 +61,10 @@ describe("Parsers for express", () => {
       })
 
     const handler = router(foo).handler()
-    const app = express().use(json()).use(handler)
+    const app = new Koa().use(handler)
+    server = app.listen(8888)
 
-    await request(app)
+    await request(server)
       .get("/foo")
       .set("X-Token", "foo")
       .set("API-KEY", "bar")
@@ -69,11 +81,9 @@ describe("Parsers for express", () => {
       })
 
     const handler = router(foo).handler()
-    const app = express().use(json()).use(cookieParser()).use(handler)
+    const app = new Koa().use(koaCookie()).use(handler)
+    server = app.listen(8888)
 
-    await request(app)
-      .get("/foo")
-      .set("Cookie", "username=smart user")
-      .expect(200, { username: "smart user" })
+    await request(server).get("/foo").set("Cookie", "username=smart user").expect(200, { username: "smart user" })
   })
 })

@@ -6,7 +6,8 @@
     "forceConsistentCasingInFileNames": true,
     "pretty": true,
     "noErrorTruncation": true,
-    "noEmit": true
+    "noEmit": true,
+    "esModuleInterop": true
   },
   "compileOnSave": false,
   "include": ["src/**/*.ts", "test/**/*.ts"]
