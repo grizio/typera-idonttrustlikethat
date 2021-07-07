@@ -62,10 +62,11 @@ describe("Parsers for express", () => {
   it("should correctly parse the cookies", async () => {
     const foo = route
       .get("/foo")
-      .use(parsers.cookies(object({ username: string })))
+      .use(parsers.cookies(object({ username: string, password: string })))
       .handler((req) => {
         const username: string = req.cookies.username
-        return Response.ok({ username })
+        const password: string = req.cookies.password
+        return Response.ok({ username, password })
       })
 
     const handler = router(foo).handler()
@@ -73,7 +74,7 @@ describe("Parsers for express", () => {
 
     await request(app)
       .get("/foo")
-      .set("Cookie", "username=smart user")
-      .expect(200, { username: "smart user" })
+      .set("Cookie", ["username=smart user", "password=Don't do this!"])
+      .expect(200, { username: "smart user", password: "Don't do this!" })
   })
 })
