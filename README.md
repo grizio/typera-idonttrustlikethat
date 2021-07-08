@@ -143,12 +143,48 @@ That is, the field in `request.headers` will have the name you specify in the `V
 ⚠️ **Note**: The input for this parser will be the headers parsed as `Record<string, string>`, i.e. all header values will be strings.
 If you want to convert them to other types, you should use `booleanFromString`, `numberFromString` or `intFromString`.
 
+```typescript
+// example:
+// GET /protected
+// X-Token: my-token
+// X-version: 1
+route
+  .get("/protected")
+  .use(Parser.headers(object({ "X-Token": string, "X-Version": intFromString })))
+  .handler(async (request) => {
+    const token: string = request.headers["X-Token"]
+    const version: number = request.headers["X-Version"]
+    return Response.ok([])
+  })
+```
+
 ### `Parser.cookies<T>(validator: Validator<T>): Middleware<{ cookies: T }, Response.BadRequest<string>>`
 
 Validate the request cookies according to the given `Validator`. Respond with `400 Bad Request` if the validation fails.
 
 ⚠️ **Note**: The input for this parser will be the cookies parsed as `Record<string, string>`, i.e. all cookie values will be strings.
 If you want to convert them to other types, you should use `booleanFromString`, `numberFromString` or `intFromString`.
+
+```typescript
+import cookieParser from "cookie-parser"
+// Or
+import koaCookie from "koa-cookie"
+
+const handler = router(
+  route
+    .get("/search")
+    .use(Parser.cookies(object({ username: string, version: intFromString })))
+    .handler(async (request) => {
+      const username: string = request.cookies.username
+      const version: number = request.cookies.version
+      return Response.ok([])
+    })
+).handler()
+
+const app = express().use(cookieParser()).use(handler)
+// Or
+const app = new Koa().use(koaCookie()).use(handler)
+```
 
 ### Customizing the error response
 
