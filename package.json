@@ -14,7 +14,8 @@
   "typings": "commonjs/index.d.ts",
   "scripts": {
     "build": "npm run build --workspaces",
-    "test": "npm test --workspaces"
+    "test": "npm test --workspaces",
+    "new-version": "node ./newVersion.js"
   },
   "files": [
     "commonjs",
