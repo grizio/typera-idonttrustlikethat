@@ -4,7 +4,7 @@ import express from "express"
 import { json } from "body-parser"
 import request from "supertest"
 import cookieParser from "cookie-parser"
-import { Parser } from "../src/express"
+import { Parser } from "../src"
 
 describe("Parsers for express", () => {
   it("should correctly parse the query", async () => {

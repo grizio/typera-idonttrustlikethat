@@ -1,14 +1,20 @@
 {
   "compilerOptions": {
-    "lib": ["es5", "es6", "es2015.core", "dom", "ES2016", "ES2017"],
-    "target": "ES5",
+    "composite": true,
+    "lib": ["es2020"],
+    "target": "ES6",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "pretty": true,
     "noErrorTruncation": true,
-    "noEmit": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
   "compileOnSave": false,
+  "references": [
+    { "path": "packages/typera-idonttrustlikethat-common" },
+    { "path": "packages/typera-idonttrustlikethat-express" },
+    { "path": "packages/typera-idonttrustlikethat-koa" }
+  ],
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }

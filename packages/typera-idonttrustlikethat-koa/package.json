@@ -1,0 +1,49 @@
+{
+  "name": "typera-idonttrustlikethat-koa",
+  "version": "0.1.0",
+  "sideEffects": false,
+  "description": "Support of idonttrustlikethat on typera - koa",
+  "main": "commonjs/index.js",
+  "module": "es/index.js",
+  "typings": "commonjs/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "npm run build-es && npm run build-commonjs",
+    "build-es": "tsc src/index.ts --outDir es --strict --noUnusedParameters --declaration --lib dom,es5,es6 --module es6 --target es6 --moduleResolution node",
+    "build-commonjs": "tsc src/index.ts --outDir commonjs --strict --noUnusedParameters --declaration --lib dom,es5,es6 --target es5",
+    "test": "ts-mocha --exit --project ./tsconfig.json test/**/*.spec.ts"
+  },
+  "files": [
+    "commonjs",
+    "es"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grizio/typera-idonttrustlikethat.git"
+  },
+  "keywords": [
+    "typescript",
+    "typera",
+    "idonttrustlikethat"
+  ],
+  "author": "Gaëtan Rizio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grizio/typera-idonttrustlikethat"
+  },
+  "homepage": "https://github.com/grizio/typera-idonttrustlikethat#readme",
+  "devDependencies": {
+    "@types/koa-bodyparser": "4.3.2",
+    "@types/koa-cookie": "1.0.0"
+  },
+  "dependencies": {
+    "typera-idonttrustlikethat-common": "0.1.0"
+  },
+  "peerDependencies": {
+    "typera-koa": "2.4.1"
+  },
+  "optionalDependencies": {
+    "koa-bodyparser": "4.3.0",
+    "koa-cookie": "1.0.0"
+  }
+}

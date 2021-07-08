@@ -1,20 +1,17 @@
 {
-  "name": "typera-idonttrustlikethat",
-  "private": true,
-  "workspaces": [
-    "packages/typera-idonttrustlikethat-common",
-    "packages/typera-idonttrustlikethat-express",
-    "packages/typera-idonttrustlikethat-koa"
-  ],
+  "name": "typera-idonttrustlikethat-common",
   "version": "0.1.0",
   "sideEffects": false,
-  "description": "Support of idonttrustlikethat on typera",
+  "description": "Support of idonttrustlikethat on typera - common",
   "main": "commonjs/index.js",
   "module": "es/index.js",
   "typings": "commonjs/index.d.ts",
   "scripts": {
-    "build": "npm run build --workspaces",
-    "test": "npm test --workspaces"
+    "prepublishOnly": "npm run build",
+    "build": "npm run build-es && npm run build-commonjs",
+    "build-es": "tsc src/index.ts --outDir es --strict --noUnusedParameters --declaration --lib dom,es5,es6 --module es6 --target es6 --moduleResolution node",
+    "build-commonjs": "tsc src/index.ts --outDir commonjs --strict --noUnusedParameters --declaration --lib dom,es5,es6 --target es5",
+    "test": "ts-mocha --exit --project ./tsconfig.json test/**/*.spec.ts"
   },
   "files": [
     "commonjs",
@@ -35,16 +32,7 @@
     "url": "https://github.com/grizio/typera-idonttrustlikethat"
   },
   "homepage": "https://github.com/grizio/typera-idonttrustlikethat#readme",
-  "devDependencies": {
-    "@types/chai": "4.2.19",
-    "@types/mocha": "8.2.2",
-    "@types/supertest": "2.0.11",
-    "chai": "4.3.4",
-    "supertest": "6.1.3",
-    "ts-mocha": "8.0.0",
-    "typescript": "4.3.5"
-  },
   "peerDependencies": {
-    "idonttrustlikethat": "2.0.3"
+    "typera-common": "2.4.1"
   }
 }

@@ -5,7 +5,7 @@ import koaBodyparser from "koa-bodyparser"
 import koaCookie from "koa-cookie"
 import request from "supertest"
 import type { Server } from "http"
-import { Parser } from "../src/koa"
+import { Parser } from "../src"
 
 describe("Parsers for koa", () => {
   let server: Server | null = null

@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "es"
+  },
+  "references": [{ "path": "../typera-idonttrustlikethat-common" }]
+}
