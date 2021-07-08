@@ -1,6 +1,6 @@
 {
   "name": "typera-idonttrustlikethat-koa",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "sideEffects": false,
   "description": "Support of idonttrustlikethat on typera - koa",
   "main": "commonjs/index.js",
@@ -39,7 +39,7 @@
     "koa-cookie": "1.0.0"
   },
   "dependencies": {
-    "typera-idonttrustlikethat-common": "0.2.0"
+    "typera-idonttrustlikethat-common": "0.2.1"
   },
   "peerDependencies": {
     "typera-koa": "^2.4.0"
