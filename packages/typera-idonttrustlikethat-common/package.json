@@ -33,6 +33,6 @@
   },
   "homepage": "https://github.com/grizio/typera-idonttrustlikethat#readme",
   "peerDependencies": {
-    "typera-common": "2.4.1"
+    "typera-common": "^2.4.0"
   }
 }

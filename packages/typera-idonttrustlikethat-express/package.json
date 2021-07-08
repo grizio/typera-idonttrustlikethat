@@ -33,16 +33,13 @@
   },
   "homepage": "https://github.com/grizio/typera-idonttrustlikethat#readme",
   "devDependencies": {
-    "@types/cookie-parser": "1.4.2"
+    "@types/cookie-parser": "1.4.2",
+    "cookie-parser": "1.4.5"
   },
   "dependencies": {
-    "idonttrustlikethat": "2.0.3",
     "typera-idonttrustlikethat-common": "0.1.0"
   },
   "peerDependencies": {
-    "typera-express": "2.4.1"
-  },
-  "optionalDependencies": {
-    "cookie-parser": "1.4.5"
+    "typera-express": "^2.4.0"
   }
 }

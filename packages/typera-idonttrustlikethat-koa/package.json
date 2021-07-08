@@ -34,16 +34,14 @@
   "homepage": "https://github.com/grizio/typera-idonttrustlikethat#readme",
   "devDependencies": {
     "@types/koa-bodyparser": "4.3.2",
-    "@types/koa-cookie": "1.0.0"
+    "@types/koa-cookie": "1.0.0",
+    "koa-bodyparser": "4.3.0",
+    "koa-cookie": "1.0.0"
   },
   "dependencies": {
     "typera-idonttrustlikethat-common": "0.1.0"
   },
   "peerDependencies": {
-    "typera-koa": "2.4.1"
-  },
-  "optionalDependencies": {
-    "koa-bodyparser": "4.3.0",
-    "koa-cookie": "1.0.0"
+    "typera-koa": "^2.4.0"
   }
 }
