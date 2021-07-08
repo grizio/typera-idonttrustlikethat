@@ -1,6 +1,6 @@
 {
   "name": "typera-idonttrustlikethat-express",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "sideEffects": false,
   "description": "Support of idonttrustlikethat on typera - express",
   "main": "commonjs/index.js",
@@ -37,7 +37,7 @@
     "cookie-parser": "1.4.5"
   },
   "dependencies": {
-    "typera-idonttrustlikethat-common": "0.1.0"
+    "typera-idonttrustlikethat-common": "0.2.0"
   },
   "peerDependencies": {
     "typera-express": "^2.4.0"
